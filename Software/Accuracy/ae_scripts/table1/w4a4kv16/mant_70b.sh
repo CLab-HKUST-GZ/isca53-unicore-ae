@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+: "${device:=0,1,2,3}"
+export CUDA_VISIBLE_DEVICES=${device}
+
+models=(
+  "meta-llama/Llama-2-70b-hf"
+)
+
+configs=(
+  "4 mixed_mant 32 4 32"
+)
+
+for cfg in "${configs[@]}"; do
+  read -r wq_bits wq_datatype wq_groupsize a_bits a_groupsize <<<"${cfg}"
+
+  for model in "${models[@]}"; do
+    echo "============================================"
+    echo "Starting ${model} mant baseline W4A4KV16"
+    echo "============================================"
+
+    python llm_eval_wikitext.py \
+      --model "${model}" \
+      --result_precision_tag 4a4kv16 \
+      --result_method mant \
+      --wq_datatype "${wq_datatype}" \
+      --wq_bits "${wq_bits}" \
+      --wq_groupsize "${wq_groupsize}" \
+      --a_bits "${a_bits}" \
+      --a_groupsize "${a_groupsize}" \
+      --no-a_fpq
+
+    echo "Finished ${model} ${wq_datatype} wq=${wq_bits} g=${wq_groupsize} aq=${a_bits} ag=${a_groupsize}"
+    echo ""
+  done
+done
+
+echo "All models completed!"
