@@ -42,6 +42,7 @@ python -m pip install -r requirements.txt
 ### Note
 
 - reviewer runs may automatically download missing models or datasets
+- to use Llama-family models, you need to log in to Hugging Face, request access, and generate an access token
 - the scripts use Hugging Face model IDs by default; if you prefer local checkpoints, replace the entries in the corresponding `models=(...)` array before running it
 - if your CUDA toolkit is not on the default path, set `CUDA_HOME` to your local CUDA root before running the scripts
 
