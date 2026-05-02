@@ -9,9 +9,7 @@ import configuration as cfg
 
 RESULTS_DIR = "results"
 
-# 映射 configuration 中的硬件配置到数据流类型
-# OS: 使用 AcceleratorOS2D
-# WS: 使用 AcceleratorWS
+
 CONFIGS = {
     "unicore_w4a4": ("ws", cfg.unicore_w4a4),
     "unicore_w4a8": ("ws", cfg.unicore_w4a8),
@@ -136,7 +134,7 @@ def build_hw_cfg_with_overrides(hw_cfg, args):
 
 
 def run_single_case(acc):
-    """运行一次仿真并返回全局统计信息。能量统一转为 uJ。"""
+
     total_compute_cycle, total_cycle = acc.calc_cycle()
     # Linear vs attention breakdown (cycles)
     linear_compute_cycle = getattr(acc, "total_cycle_compute_linear", 0)
@@ -176,7 +174,7 @@ def run_config(
     is_generation_override=None,
     batch_size_override=None,
 ):
-    """对一个硬件配置跑 model_list × cxt_len 全部组合，并写入一个 CSV。"""
+
     if batch_size_override is None:
         batch_size = cfg.batch_size
     else:
