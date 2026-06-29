@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# Simple evaluation script for bitmod baseline on LM-Eval tasks.
+# WikiText-2 PPL evaluation script for BitMoD baseline.
 
 set -euo pipefail
 
@@ -8,8 +8,7 @@ set -euo pipefail
 export CUDA_VISIBLE_DEVICES=${device}
 
 models=(
-  "meta-llama/Meta-Llama-3-8B"
-  "Qwen/Qwen3-8B"
+  "meta-llama/Llama-2-7b-hf"
 )
 
 # Quantization sweep settings: "wq_bits wq_datatype wq_groupsize a_bits a_groupsize"
@@ -25,8 +24,7 @@ for cfg in "${configs[@]}"; do
     echo "Starting ${model} bitmod baseline GS128"
     echo "============================================"
 
-    python llm_eval_tasks.py \
-      --task_group group1 \
+    python llm_eval_wikitext_fpma.py \
       --result_table table4 \
       --result_precision_tag gs128 \
       --result_method bitmod \
