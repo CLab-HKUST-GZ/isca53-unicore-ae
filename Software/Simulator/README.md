@@ -1,7 +1,7 @@
 # UniCore Hardware Simulator
 
 We reproduce the simulator-side artifact-evaluation figures with the scripts under `ae_scripts/`.
-All commands below should be run from this repository root.
+All commands below should be run from `Software/Simulator`.
 
 ## Environment
 
@@ -95,28 +95,27 @@ Each script does the following:
 
 ### Run figures
 
+From the top-level repository, enter this directory and activate the simulator
+environment once:
+
+```bash
+cd Software/Simulator
+conda activate unicore_sim
+```
+
 Prefill:
 
 ```bash
-conda activate unicore_sim
 bash ae_scripts/figure17-18/run_prefill_ae.sh --memory ddr4 --cxt-len 8192 --fused-attn  # figure 17-18 # About 10 minutes
 ```
 
 Decode:
 
 ```bash
-conda activate unicore_sim
 bash ae_scripts/figure19-20/run_decode_ae.sh --memory ddr4 --cxt-len 8192 --batch-size 128  # figure 19
 bash ae_scripts/figure19-20/run_decode_ae.sh --memory hbm2 --cxt-len 8192 --batch-size 128  # figure 20
 bash ae_scripts/figure19-20/run_decode_ae.sh --memory both --cxt-len 8192 --batch-size 128  # figure 19-20 # About 15 minutes
 ```
-
-### Clean space
-
-```bash
-bash ae_scripts/clean_ae.sh  # clean all generated outputs
-```
-
 
 - `--memory ddr4|hbm2|both`
 - `--cxt-len <int>`
@@ -125,7 +124,7 @@ bash ae_scripts/clean_ae.sh  # clean all generated outputs
 - `--skip-dramsim` to reuse the existing `DRAMsim3/runs_by_type/summary.csv`
 - `--dry-run` to print commands without executing them
 
-### Output
+### Output and cleanup
 
 Generated outputs are written under:
 
@@ -144,8 +143,6 @@ Figure mapping for the current AE scripts:
 - `plot/figure19-20.py`: decode plotting script for Figure 19 and Figure 20
 - `ae_scripts/figure17-18/run_prefill_ae.sh --memory ddr4 --cxt-len 8192 --fused-attn`: writes `figure/figure17.{pdf,png}` and `figure/figure18.{pdf,png}`
 - `ae_scripts/figure19-20/run_decode_ae.sh --memory both --cxt-len 8192 --batch-size 128`: writes `figure/figure19.{pdf,png}` and `figure/figure20.{pdf,png}`
-
-### Cleanup
 
 To clean AE-generated artifacts and return to the pre-run repository shape:
 
