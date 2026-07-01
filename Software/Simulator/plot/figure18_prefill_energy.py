@@ -1,5 +1,6 @@
 import argparse
 import csv
+import logging
 from pathlib import Path
 
 import matplotlib.pyplot as plt
@@ -7,6 +8,8 @@ import numpy as np
 from matplotlib.gridspec import GridSpec
 from matplotlib.patches import Patch
 
+
+logging.getLogger('matplotlib.font_manager').setLevel(logging.ERROR)
 
 plt.rcParams['font.family'] = 'Times New Roman'
 plt.rcParams['pdf.fonttype'] = 42

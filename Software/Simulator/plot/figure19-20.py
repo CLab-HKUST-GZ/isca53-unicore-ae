@@ -1,5 +1,6 @@
 import csv
 import argparse
+import logging
 from pathlib import Path
 
 import matplotlib.pyplot as plt
@@ -19,6 +20,8 @@ FONT_SIZE_MODEL_LABEL = 28
 FONT_SIZE_PRECISION_LABEL = 28
 FONT_SIZE_LEGEND = 28
 
+
+logging.getLogger("matplotlib.font_manager").setLevel(logging.ERROR)
 
 plt.rcParams["font.family"] = FONT_FAMILY
 plt.rcParams["pdf.fonttype"] = 42
@@ -413,7 +416,7 @@ def main():
         "--cycle-key",
         type=str,
         default="total_cycle",
-        help="CSV column used to compute speedup (ANT cycle / current cycle).",
+        help="CSV column used to compute speedup (OliVe cycle / current cycle).",
     )
     args = parser.parse_args()
 

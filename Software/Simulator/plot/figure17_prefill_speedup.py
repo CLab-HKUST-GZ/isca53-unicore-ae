@@ -1,10 +1,13 @@
 import argparse
 import csv
+import logging
 from pathlib import Path
 
 import matplotlib.pyplot as plt
 import numpy as np
 
+
+logging.getLogger('matplotlib.font_manager').setLevel(logging.ERROR)
 
 # Keep the legacy prefill style exactly aligned with the original prefill speedup plot.
 plt.rcParams['font.family'] = 'Times New Roman'

@@ -10,7 +10,7 @@ MODELS = [
     "meta-llama/Llama-2-7b-hf",
     "meta-llama/Meta-Llama-3-8B",
 ]
-METHODS = ["ant", "olive", "tender", "mant", "unicore"]
+METHODS = ["olive", "tender", "mant", "unicore"]
 
 
 def parse_args():
@@ -42,9 +42,9 @@ def parse_args():
     parser.add_argument(
         "--others",
         nargs="+",
-        default=["ant", "olive", "tender", "mant"],
+        default=["olive", "tender", "mant"],
         choices=METHODS,
-        help="Methods to compare against the target. Default: ant olive tender mant",
+        help="Methods to compare against the target. Default: olive tender mant",
     )
     parser.add_argument(
         "--show-cases",

@@ -45,42 +45,6 @@ unicore_w8a8 = {
     "i_prec": 8,
 }
 
-ant_w4a4 = {
-    "pe_dp_size": 1,
-    "is_bit_serial": False,
-    "pe_energy": 0.269,
-    "pe_area": 1055044/4096,
-    "pe_array_dim": [78, 64],
-    
-    "w_prec": 4,
-    "kv_prec": 16,
-    "i_prec": 4,
-}
-
-ant_w4a8 = {
-    "pe_dp_size": 1,
-    "is_bit_serial": False,
-    "pe_energy": 0.537,
-    "pe_area": 1055044/2048,
-    "pe_array_dim": [78, 32],
-    
-    "w_prec": 4,
-    "kv_prec": 16,
-    "i_prec": 8,
-}
-
-ant_w8a8 = {
-    "pe_dp_size": 1,
-    "is_bit_serial": False,
-    "pe_energy": 1.074,
-    "pe_area": 1055044/1024,
-    "pe_array_dim": [39, 32],
-    
-    "w_prec": 8,
-    "kv_prec": 16,
-    "i_prec": 8,
-}
-
 olive_w4a4 = {
     "pe_dp_size": 1,
     "is_bit_serial": False,
