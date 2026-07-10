@@ -98,8 +98,8 @@ case class UniCore_Tile_4b8b(
   for (dr <- 0 until DualPE_Row) {
     for (dc <- 0 until DualPE_Col) {
       if (dc == 0) {
-        DualPEs(dr)(dc).io.PSumIn_L := io.PSumIn_L(dc).setName(s"PSumIn_L_dr${dr}")
-        DualPEs(dr)(dc).io.PSumIn_R := io.PSumIn_R(dc).setName(s"PSumIn_R_dr${dr}")
+        DualPEs(dr)(dc).io.PSumIn_L := io.PSumIn_L(dr).setName(s"PSumIn_L_dr${dr}")
+        DualPEs(dr)(dc).io.PSumIn_R := io.PSumIn_R(dr).setName(s"PSumIn_R_dr${dr}")
       } else {
         DualPEs(dr)(dc).io.PSumIn_L := DualPEs(dr)(dc-1).io.PSumOut_L
         DualPEs(dr)(dc).io.PSumIn_R := DualPEs(dr)(dc-1).io.PSumOut_R

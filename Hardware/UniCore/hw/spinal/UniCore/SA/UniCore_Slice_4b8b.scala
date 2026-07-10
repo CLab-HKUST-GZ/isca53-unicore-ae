@@ -82,8 +82,8 @@ case class UniCore_Slice_4b8b(
       Tiles(tr)(tc+1).io.PSumIn_R := HorizRegTable_PSum_R(tr)(tc)
     }
     // Outputs
-    io.PSumOut_L(tr) := Tiles(tr)(Tile_Col-1).io.PSumIn_L
-    io.PSumOut_R(tr) := Tiles(tr)(Tile_Col-1).io.PSumIn_R
+    io.PSumOut_L(tr) := Tiles(tr)(Tile_Col-1).io.PSumOut_L
+    io.PSumOut_R(tr) := Tiles(tr)(Tile_Col-1).io.PSumOut_R
   }
 
 
