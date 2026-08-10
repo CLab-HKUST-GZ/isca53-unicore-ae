@@ -60,13 +60,17 @@ case class UniCore_Slice_4b8b(
   for (tc <- 0 until Tile_Col) {
     Tiles(0)(tc).io.W_6b_CIN_L := io.DinTop_W_6b_L(tc)
     Tiles(0)(tc).io.W_6b_CIN_R := io.DinTop_W_6b_R(tc)
-    Tiles(0)(tc).io.T_7b_CIN_L := io.DinTop_T_7b_L(tc)
-    Tiles(0)(tc).io.T_7b_CIN_R := io.DinTop_T_7b_R(tc)
+    DinTopRegTable_T_7b_L(0)(tc) := io.DinTop_T_7b_L(tc)
+    DinTopRegTable_T_7b_R(0)(tc) := io.DinTop_T_7b_R(tc)
+    Tiles(0)(tc).io.T_7b_CIN_L := DinTopRegTable_T_7b_L(0)(tc)
+    Tiles(0)(tc).io.T_7b_CIN_R := DinTopRegTable_T_7b_R(0)(tc)
     for (tr <- 0 until Tile_Row-1) {
       Tiles(tr+1)(tc).io.W_6b_CIN_L := Tiles(tr)(tc).io.W_6b_COUT_L
       Tiles(tr+1)(tc).io.W_6b_CIN_R := Tiles(tr)(tc).io.W_6b_COUT_R
-      Tiles(tr+1)(tc).io.T_7b_CIN_L := Tiles(tr)(tc).io.T_7b_COUT_L
-      Tiles(tr+1)(tc).io.T_7b_CIN_R := Tiles(tr)(tc).io.T_7b_COUT_R
+      DinTopRegTable_T_7b_L(tr+1)(tc) := Tiles(tr)(tc).io.T_7b_COUT_L
+      DinTopRegTable_T_7b_R(tr+1)(tc) := Tiles(tr)(tc).io.T_7b_COUT_R
+      Tiles(tr+1)(tc).io.T_7b_CIN_L := DinTopRegTable_T_7b_L(tr+1)(tc)
+      Tiles(tr+1)(tc).io.T_7b_CIN_R := DinTopRegTable_T_7b_R(tr+1)(tc)
     }
   }
 
