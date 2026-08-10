@@ -6,8 +6,8 @@ import UniCore.Config
 import scala.language.postfixOps
 
 
-// * UniCore Slice (Per-Group Quantization Supported, Systolic Spatial Array, Weight Stationary)
-case class UniCore_Slice_4b8b(
+// * UniCore Group (Per-Group Quantization Supported, Systolic Spatial Array, Weight Stationary)
+case class UniCore_Group_4b8b(
                                Tile_Row   : Int,
                                Tile_Col   : Int,
                                DualPE_Row : Int,
